@@ -13,7 +13,7 @@
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    background-image: url("./图片/背景/bg.jpg");
+    background-image: url("./tupian/beijing/bg.jpg");
 }
 audio::-webkit-media-controls-overflow-button {
   display: none;

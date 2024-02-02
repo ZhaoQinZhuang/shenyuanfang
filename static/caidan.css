@@ -7,7 +7,7 @@ body, html {
 #heng{
     width: 100%;
     height: 100%;
-    background-image: url("./图片/背景/横幅.png");
+    background-image: url("./tupian/beijing/hengfu.png");
 }
 .juzhong{
     display: flex;
