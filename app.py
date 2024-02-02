@@ -9,7 +9,7 @@ def index():
     if request.method == 'GET':
         # 想要html文件被该函数访问到，首先要创建一个templates文件，将html文件放入其中
         # 该文件夹需要被标记为模板文件夹，且模板语言设置为jinja2
-        return render_template('首页.html')
+        return render_template('index.html')
     # 此处欲发送post请求，需要在对应html文件的form表单中设置method为post
     elif request.method == 'POST':
         name = request.form.get('name')
