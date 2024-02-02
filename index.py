@@ -15,33 +15,33 @@ def index():
         name = request.form.get('name')
         password = request.form.get('password')
         return name + " " + password
-@app.route("/小说.html", methods=['GET', 'POST'])
+@app.route("/xiaoshuo.html", methods=['GET', 'POST'])
 def xiaoshuo():
     if request.method == 'GET':
         return render_template('xiaoshuo.html')
-@app.route("/菜单.html", methods=['GET', 'POST'])
+@app.route("/caidan.html", methods=['GET', 'POST'])
 def caidan():
     if request.method == 'GET':
         return render_template('caidan.html')
-@app.route("/欢迎.html", methods=['GET', 'POST'])
+@app.route("/huanying.html", methods=['GET', 'POST'])
 def huanying():
     if request.method == 'GET':
         return render_template('huanying.html')
-@app.route("/抽奖.html", methods=['GET', 'POST'])
+@app.route("/choujiang.html", methods=['GET', 'POST'])
 def choujiang():
     if request.method == 'GET':
         return render_template('choujiang.html')
-@app.route('/大战赛/目录.html', methods=['GET', 'POST'])
+@app.route('/dazhansai/mulu.html', methods=['GET', 'POST'])
 def mulu():
     if request.method == 'GET':
-        return render_template('dazhansai/目录.html')
-@app.route('/大战赛/第一部.html', methods=['GET', 'POST'])
+        return render_template('dazhansai/mulu.html')
+@app.route('/dazhansai/di1bu.html', methods=['GET', 'POST'])
 def mulu1():
     if request.method == 'GET':
-        return render_template('dazhansai/第一部.html')
-@app.route('/大战赛/第二部.html', methods=['GET', 'POST'])
+        return render_template('dazhansai/di1bu.html')
+@app.route('/dazhansai/di2bu.html', methods=['GET', 'POST'])
 def mulu2():
     if request.method == 'GET':
-        return render_template('dazhansai/第二部.html')
+        return render_template('dazhansai/di2bu.html')
 if __name__ == '__main__':
     app.run()
