@@ -5,5 +5,9 @@
       "src": "./index.py",
       "use": "@vercel/python"
     }
+<<<<<<< HEAD
     ],
+=======
+    ]
+>>>>>>> e651ecea532d032fc72533be81011b935df971c4
 }
