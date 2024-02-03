@@ -5,6 +5,7 @@ app = Flask(__name__)
 # 创建蓝图对象
 main_bp = Blueprint('main', __name__)
 dazhansai_bp = Blueprint('dazhansai', __name__, url_prefix='/dazhansai')
+doudouriji_bp = Blueprint('doudouriji', __name__, url_prefix='/doudouriji')
 
 # 使用蓝图对象定义主页路由
 @main_bp.route("/", methods=['GET', 'POST'])
@@ -40,11 +41,17 @@ def choujiang():
 @dazhansai_bp.route('/<path>.html', methods=['GET', 'POST'])
 def dazhansai_route(path):
     if request.method == 'GET':
-        return render_template('dazhansai/' + path + '.html')
+        return render_template('dazhansai/' + path + '.html')\
+
+@doudouriji_bp.route('/<path>.html', methods=['GET', 'POST'])
+def doudouriji_route(path):
+    if request.method == 'GET':
+        return render_template('doudouriji/' + path + '.html')
 
 # 在主应用中注册蓝图
 app.register_blueprint(main_bp)
 app.register_blueprint(dazhansai_bp)
+app.register_blueprint(doudouriji_bp)
 
 if __name__ == '__main__':
     app.run()
