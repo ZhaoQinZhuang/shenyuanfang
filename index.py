@@ -1,47 +1,50 @@
-from flask import Flask,render_template,request
-
+from flask import Flask, render_template, request, Blueprint
 
 app = Flask(__name__)
 
-@app.route("/", methods=['GET', 'POST'])
-# url映射的函数，要传参则在上述route（路由）中添加参数申明
+# 创建蓝图对象
+main_bp = Blueprint('main', __name__)
+dazhansai_bp = Blueprint('dazhansai', __name__, url_prefix='/dazhansai')
+
+# 使用蓝图对象定义主页路由
+@main_bp.route("/", methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        # 想要html文件被该函数访问到，首先要创建一个templates文件，将html文件放入其中
-        # 该文件夹需要被标记为模板文件夹，且模板语言设置为jinja2
         return render_template('index.html')
-    # 此处欲发送post请求，需要在对应html文件的form表单中设置method为post
     elif request.method == 'POST':
         name = request.form.get('name')
         password = request.form.get('password')
         return name + " " + password
-@app.route("/xiaoshuo.html", methods=['GET', 'POST'])
+
+@main_bp.route("/xiaoshuo.html", methods=['GET', 'POST'])
 def xiaoshuo():
     if request.method == 'GET':
         return render_template('xiaoshuo.html')
-@app.route("/caidan.html", methods=['GET', 'POST'])
+
+@main_bp.route("/caidan.html", methods=['GET', 'POST'])
 def caidan():
     if request.method == 'GET':
         return render_template('caidan.html')
-@app.route("/huanying.html", methods=['GET', 'POST'])
+
+@main_bp.route("/huanying.html", methods=['GET', 'POST'])
 def huanying():
     if request.method == 'GET':
         return render_template('huanying.html')
-@app.route("/choujiang.html", methods=['GET', 'POST'])
+
+@main_bp.route("/choujiang.html", methods=['GET', 'POST'])
 def choujiang():
     if request.method == 'GET':
         return render_template('choujiang.html')
-@app.route('/dazhansai/mulu.html', methods=['GET', 'POST'])
-def mulu():
+
+# 使用蓝图对象定义dazhansai相关路由
+@dazhansai_bp.route('/<path>.html', methods=['GET', 'POST'])
+def dazhansai_route(path):
     if request.method == 'GET':
-        return render_template('dazhansai/mulu.html')
-@app.route('/dazhansai/di1bu.html', methods=['GET', 'POST'])
-def mulu1():
-    if request.method == 'GET':
-        return render_template('dazhansai/di1bu.html')
-@app.route('/dazhansai/di2bu.html', methods=['GET', 'POST'])
-def mulu2():
-    if request.method == 'GET':
-        return render_template('dazhansai/di2bu.html')
+        return render_template('dazhansai/' + path + '.html')
+
+# 在主应用中注册蓝图
+app.register_blueprint(main_bp)
+app.register_blueprint(dazhansai_bp)
+
 if __name__ == '__main__':
     app.run()
